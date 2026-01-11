@@ -1,0 +1,42 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.log
+
+# --- Виртуальное окружение (Самое важное!) ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- IDE (Настройки PyCharm и VS Code) ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- База Данных (ChromaDB) ---
+chroma_db_data/
+*.sqlite3
+
+# --- Данные и Артефакты ETL ---
+ETL/*.json
+ETL/labor_code_chunks.json
+ETL/labor_code_processed.json
+ETL/dataset.json
+
+# Исходный документ (DOCX).
+# ETL/*.docx
+
+# --- Docker ---
+docker-compose.override.yml
+
+# --- Системные файлы ---
+.DS_Store
+Thumbs.db
+
+# --- Секреты (На всякий случай) ---
+.env

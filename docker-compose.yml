@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # --- СЕРВИС 1: НЕЙРОСЕТЬ (OLLAMA) ---
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_storage:/root/.ollama # Сохраняем модель, чтобы не качать каждый раз
+
+  # --- СЕРВИС 2: ВАШ API (BACKEND) ---
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ollama # Запускать только после ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434 # Говорим Python-коду, где искать Ollama
+    volumes:
+      - ./chroma_db_data:/app/chroma_db_data # Прокидываем базу данных внутрь
+
+  # --- СЕРВИС 3: ВАШ ИНТЕРФЕЙС (FRONTEND) ---
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    environment:
+      # Внутри сети Docker мы обращаемся к сервису по имени "backend", а не localhost!
+      - API_URL=http://backend:8000/ask
+
+volumes:
+  ollama_storage:
