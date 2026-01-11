@@ -1,4 +1,3 @@
-![Интерфейс бота](assets/demo_screenshot.png)
 ---
 
 # ⚖️ AI Legal Assistant (RAG System on Russian Labor Code)
@@ -100,3 +99,8 @@ docker exec -it ragsystem-ollama-1 ollama run gemma2:2b
 ---
 
 **Author:** Mikegix
+
+![Интерфейс бота](assets/demo_screenshot.png)
+![Интерфейс бота](assets/demo_screenshot2.png)
+![Docker](assets/docker.png)
+![Логи](assets/logs.png)
