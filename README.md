@@ -1,4 +1,4 @@
-
+![Интерфейс бота](assets/demo_screenshot.png)
 ---
 
 # ⚖️ AI Legal Assistant (RAG System on Russian Labor Code)
